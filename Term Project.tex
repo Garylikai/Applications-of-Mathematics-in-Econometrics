@@ -1,0 +1,98 @@
+% Import the LaTeX style file and load some common packages
+\documentclass[final]{siamart1116}
+\usepackage{amsfonts}
+\usepackage{amsopn}
+
+% Declare the title, author, and any other front matter
+
+% Title
+\title{Applications of Mathematics in Econometrics}
+
+% Authors: Full names and addresses
+\author{Kai Li}
+
+% Page headers (visible after the cover page)
+\headers{AMS 510 Term Project}{K. Li}
+
+% Start the document
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\label{sec:intro}
+In a broad view, econometrics is the science and art of analyzing economic data using economic theory and statistical techniques \cite{bk:stock_watson}. For instance, econometricians are interested in exploring the wage gap among different education levels so that policymakers can adjust policies effectively. They also investigate returns on strategies used by central banks to decide whether to follow implied economic theory or not. Lastly, they predict critical macroeconomic variables such as interest rates, inflation rates, and GDP to track the health of a nation's economy \cite{bk:wooldridge}.
+
+I am interested in econometrics since it is both a theoretical subject that focuses on economic theory and empirical analysis that uses data sets to test economic theory. Econometrics is cross-disciplinary, and its methods utilize undergraduate-level statistics and data analysis techniques. Thus, familiarity with calculus, matrix algebra, and statistics greatly help to understand mathematics applications in econometrics. 
+
+From an empirical perspective, econometricians use data to test a theory or estimate a relationship by constructing a formal economic model \cite{bk:wooldridge}. One problem that occurs during the stage of collecting data is to identify various data types. The three main types are cross-sectional data, time series data, and panel/longitudinal data \cite{bk:stock_watson}.
+
+Cross-sectional data is the most fundamental type and will be used to formulate an economic model in the paper. Though some econometric methods can be applied directly to many different types of data sets without any modifications, some data sets' unique characteristics must be accounted for or should be exploited \cite{bk:wooldridge}. In that sense, we have to be careful identifying appropriate methods corresponding to the data sets, as it is a significant procedure in econometric analysis.
+
+The goal of the paper is to specify an econometric model using applied mathematics concepts. Specifically, I will be focusing on the linear regression model, using the method of least squares, because this model readily leads to further mathematical treatment and provides good approximations to otherwise complicated regression equations \cite{bk:miller_miller}. The least squares method is a curve fitting technique suggested by Legendre \cite{bk:miller_miller} and published by Gauss early in the nineteenth century \cite{bk:tamhane_dunlop}. 
+
+Once an econometric model has been constructed, hypothesis testing of interest can be stated in terms of unknown parameters. Forecasting in either testing a theory or studying a policy’s impact becomes probable in later econometric analysis \cite{bk:wooldridge}.
+
+
+\section{The Method of Least Squares (LS) in Linear Regression}
+\label{sec:misc}
+Consider a probabilistic linear multiple regression model of a sample with $n$ observations:
+\begin{equation}\label{eq:mlr}
+{Y_{i}}=\beta_{0}+\beta_{1}{x_{i1}}+\dots+\beta_{k}x_{ik}+\epsilon_{i},\quad i=1,2,\dots,n,
+\end{equation}
+where $\epsilon_{i}$ is a random error with $\mathrm{E}[\epsilon_{i}]=0$ and $\mathrm{Var}[\epsilon_{i}]=\sigma^{2}$ \cite{bk:tamhane_dunlop}. $Y_{i}$, $x_{i1},\dots, x_{ik}$ are called the regressand and regressors, respectively, and are determined by the economic theory, intuition and data considerations \cite{bk:stock_watson, bk:wooldridge}. $\beta_{0},\dots, \beta_{k}$ are regression coefficients. The method of LS finds all coefficients such that regression line provides the best fit to data. Denote the vertical distance from each observed point to estimated regression line by residual $e_{i}$. If the model is correct, $e_{i}$'s are estimates of $\epsilon_{i}$'s. The LS estimate of $\beta$'s, denoted by $ \widehat{\beta}$'s, can be obtained by minimizing the following equation\footnote{I will refer to $\sum$ as $\sum_{i=1}^{n}$ for all summations in the paper.}: 
+\begin{equation}\label{eq:mlr_lse}
+Q=\sum e_{i}^{2}=\sum\left[y_{i}-(\beta_{0}+\beta_{1}{x_{i1}}+\dots+\beta_{k}x_{ik})\right]^2.
+\end{equation}
+
+
+\section{Extreme Values of a Function}
+\label{sec:ac}
+Advanced calculus helps to minimize $Q$ in Eq. (\ref{eq:mlr_lse}). Based on Theorem 11.6.3 from \cite{bk:petrovic}, we differentiate partially with respect to the $\beta$'s, and equate these $k+1$ partial derivatives to zero. After simplifications, we are able to solve the following $k+1$ normal equations, and get the desired $\widehat{\beta}$'s:
+\begin{equation}\label{eq:mlr_normal}
+\begin{aligned}
+\sum y_{i}\,=\,n\beta_{0}+\left(\sum x_{i1}\right)\beta_{1}&+\dots+\left(\sum x_{ik}\right)\beta_{k}\\
+\sum x_{ij}y_{i}\,=\,\left(\sum x_{ij}\right)\beta_{0}+\left(\sum x_{ij}x_{i1}\right)\beta_{1}&+\dots+\left(\sum x_{ij}x_{ik}\right)\beta_{k},\quad j=1,2,\dots,k.
+\end{aligned}
+\end{equation}
+
+It can be shown that $Q$ is a convex function of $\beta$'s. By Theorem 11.6.6 in \cite{bk:petrovic}, the first partials of $Q$ with respect to $\beta_{0},\dots, \beta_{k}$ equal to zero yield a global minimum. That is, the $\widehat{\beta}$'s are indeed the coefficients for our econometric linear regression model. 
+
+
+\section{The Big Picture for LS: Projection}
+\label{sec:la}
+The method of least squares, Eq. (\ref{eq:mlr}), can be represented more conviniently using matrix notation: $\pmb{Y}=\pmb{X\beta}+\pmb{\epsilon}$. Denote
+\[
+\pmb{Y}=\begin{bmatrix}
+Y_{1}\\Y_{2}\\\vdots\\Y_{n}
+\end{bmatrix},\,
+\pmb{y}=\begin{bmatrix}
+y_{1}\\y_{2}\\\vdots\\y_{n}
+\end{bmatrix},\,
+\pmb{X}=\begin{bmatrix}
+1      & x_{11} & \dots  & x_{1k}\\
+1      & x_{21} & \dots  & x_{2k}\\
+\vdots & \vdots & \ddots & \vdots\\
+1      & x_{n1} & \dots  & x_{nk}
+\end{bmatrix},\,
+\pmb{\beta}=\begin{bmatrix}
+\beta_{0}\\\beta_{1}\\\vdots\\\beta_{k}
+\end{bmatrix},\,
+\pmb{\epsilon}=\begin{bmatrix}
+\epsilon_{1}\\\epsilon_{2}\\\vdots\\\epsilon_{n}
+\end{bmatrix},\,
+\pmb{e}=\begin{bmatrix}
+e_{1}\\e_{2}\\\vdots\\e_{n}
+\end{bmatrix}.
+\]
+
+However, it is not always possible to find a perfect regression line for data points. To verify, $\pmb{X}\pmb{\beta}=\pmb{y}$ has no solution if the nullspace of $\pmb{X}$ is $\{\pmb{0}\}$ \cite{bk:strang}. In this case, $\|\pmb{e}\|$ can be minimized and $\pmb{\widehat{\beta}}$ can be found using the Least Squares approximation. Otherwise, the linear regression $\pmb{y}=\pmb{X}\pmb{\beta}$ is a perfect fit with residual $\pmb{e}=\pmb{y}-\pmb{X}\pmb{\beta}=\pmb{0}$, which exists in rare and idealized situations \cite{bk:tamhane_dunlop}. In econometrics, due to the existence of other likely factors that impact the regressand, the observations generally do not fall exactly on the population regression line \cite{bk:stock_watson}.
+
+Therefore, suppose that no exact solution exists. The cross-product matrix $\pmb{X}^{T}\pmb{X}$ is invertible, square, and symmetric, having the same nullspace as $\pmb{X}$ \cite{bk:strang2}. This implies that solving $\pmb{X}^{T}\pmb{X}\pmb{\beta}=\pmb{X}^{T}\pmb{y}$, equivalently solving Eq. (\ref{eq:mlr_normal}), gives the projection $\pmb{p}=\pmb{X}\pmb{\beta}$ of $\pmb{y}$ onto the column space of $\pmb{X}$ that fully determines the best vector $\pmb{\widehat{\beta}}$ \cite{bk:strang}. That is to say, the solution of Eq. (\ref{eq:mlr_normal}) is given by $\pmb{\widehat{\beta}}=(\pmb{X}^{T}\pmb{X})^{-1}\pmb{X}^{T}\pmb{y}$, which can be easier to solve compared with solving Eq. (\ref{eq:mlr_normal}). Hence, $\pmb{\widehat{\beta}}$ minimizes $Q=\|\pmb{e}\|^2=\|\pmb{y}-\pmb{X}\pmb{\beta}\|^2$ with residual satisfying $\pmb{X}^{T}\pmb{e}=\pmb{0}$. After replacing $\pmb{\widehat{\beta}}$ with coefficients in our econometric model, we can proceed to do hypothesis testing and make predictions as the future steps in econometric analysis.
+
+
+
+% Put references, in BibTeX format, in the file refs.bib
+\bibliographystyle{siamplain}
+\bibliography{refs}
+
+\end{document}
