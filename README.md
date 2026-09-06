@@ -1,4 +1,4 @@
-# Applications-of-Mathematics-in-Econometrics
+# Applications of Mathematics in Econometrics
 
 An AMS 510 project from Fall 2020 connects multiple linear regression in econometrics with least-squares optimization, multivariable calculus, and orthogonal projection.
 
@@ -28,7 +28,7 @@ Together, these perspectives show why least squares provides the best linear app
 
 ## Repository contents
 
-- `applications-of-mathematics-in-econometrics.pdf` — final two-page paper
+- `Term Project.pdf` — final two-page paper
 - `README.md` — project overview
 
 ## Author
