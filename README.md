@@ -20,9 +20,9 @@ The paper develops three complementary views of least squares:
 2. **Multivariable calculus:** setting the partial derivatives of the objective function equal to zero produces the normal equations; convexity identifies the resulting stationary point as a global minimum.
 3. **Linear algebra:** the fitted response is the orthogonal projection of the observed response vector onto the column space of the design matrix. When $X^\mathsf{T}X$ is invertible, the coefficient estimator is
 
-   $$
-   \widehat{\beta} = (X^\mathsf{T}X)^{-1}X^\mathsf{T}y.
-   $$
+$$
+\widehat{\beta} = (X^\mathsf{T}X)^{-1}X^\mathsf{T}y.
+$$
 
 Together, these perspectives show why least squares provides the best linear approximation in the Euclidean-distance sense and prepares the model for later inference and prediction.
 
